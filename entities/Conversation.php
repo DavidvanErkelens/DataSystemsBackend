@@ -37,4 +37,35 @@ class Conversation extends Entity
         // Return collection
         return new ConversationRatingCollection($filter);
     }
+
+    /**
+     *  Pass the conversation through the model
+     *  @return ???
+     */
+    public function model()
+    {
+        // Format input for Python script
+        $input = "ABCDEF";
+
+        // Store current directory
+        $dir = __DIR__;
+
+        // Format command to run
+        $command = "python3 {$dir}/../bin/model.py \"{$input}\"";
+
+        // Store output
+        ob_start();
+
+        // Run script
+        passthru($command);
+
+        // Fetch output
+        $output = ob_get_clean();
+
+        // Decode output (JSON)
+        $output = json_decode($output, true);
+
+        // Return the result of the model run
+        return $output['result'];
+    }
 }
