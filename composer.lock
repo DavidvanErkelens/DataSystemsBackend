@@ -1,0 +1,201 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "cec3ca151894db1aecbb8a50d5f544e6",
+    "content-hash": "be4be1fc13debe1efbbc230fb3de3f74",
+    "packages": [
+        {
+            "name": "DavidvanErkelens/AutoIncluder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DavidvanErkelens/AutoIncluder.git",
+                "reference": "037135dc23852a4764530108dde076ee2940a3f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidvanErkelens/AutoIncluder/zipball/037135dc23852a4764530108dde076ee2940a3f4",
+                "reference": "037135dc23852a4764530108dde076ee2940a3f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "/"
+                }
+            },
+            "description": "A simple autoloader to include class files in a certain folder",
+            "support": {
+                "source": "https://github.com/DavidvanErkelens/AutoIncluder/tree/master",
+                "issues": "https://github.com/DavidvanErkelens/AutoIncluder/issues"
+            },
+            "time": "2018-11-23 10:07:06"
+        },
+        {
+            "name": "DavidvanErkelens/SiteFramework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:DavidvanErkelens/SiteFramework.git",
+                "reference": "0cf6dbb7173e32f0fa77a6565fea7578756a3197"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidvanErkelens/SiteFramework/zipball/0cf6dbb7173e32f0fa77a6565fea7578756a3197",
+                "reference": "0cf6dbb7173e32f0fa77a6565fea7578756a3197",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "smarty/smarty": "~3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SiteFramework\\": "/core"
+                }
+            },
+            "description": "David's private site framework",
+            "support": {
+                "source": "https://github.com/DavidvanErkelens/SiteFramework/tree/master",
+                "issues": "https://github.com/DavidvanErkelens/SiteFramework/issues"
+            },
+            "time": "2018-12-08 14:48:36"
+        },
+        {
+            "name": "DavidvanErkelens/SqlFramework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:DavidvanErkelens/SqlFramework.git",
+                "reference": "798e36e4496fa4520b42eff0b27f696ff102d610"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidvanErkelens/SqlFramework/zipball/798e36e4496fa4520b42eff0b27f696ff102d610",
+                "reference": "798e36e4496fa4520b42eff0b27f696ff102d610",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SqlFramework\\": [
+                        "/",
+                        "core/"
+                    ]
+                }
+            },
+            "description": "David's private sql framework",
+            "support": {
+                "source": "https://github.com/DavidvanErkelens/SqlFramework/tree/master",
+                "issues": "https://github.com/DavidvanErkelens/SqlFramework/issues"
+            },
+            "time": "2018-11-23 13:04:37"
+        },
+        {
+            "name": "DavidvanErkelens/ToolboxFramework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:DavidvanErkelens/ToolboxFramework.git",
+                "reference": "035d3e49549c31c8a5a7b05bd7ba2435dfdce61f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidvanErkelens/ToolboxFramework/zipball/035d3e49549c31c8a5a7b05bd7ba2435dfdce61f",
+                "reference": "035d3e49549c31c8a5a7b05bd7ba2435dfdce61f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ToolboxFramework\\": "/"
+                }
+            },
+            "description": "David's private Toolbox framework",
+            "support": {
+                "source": "https://github.com/DavidvanErkelens/ToolboxFramework/tree/master",
+                "issues": "https://github.com/DavidvanErkelens/ToolboxFramework/issues"
+            },
+            "time": "2018-11-23 13:13:51"
+        },
+        {
+            "name": "smarty/smarty",
+            "version": "v3.1.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarty-php/smarty.git",
+                "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+                "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "libs/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Monte Ohrt",
+                    "email": "monte@ohrt.com"
+                },
+                {
+                    "name": "Uwe Tews",
+                    "email": "uwe.tews@googlemail.com"
+                },
+                {
+                    "name": "Rodney Rehm",
+                    "email": "rodney.rehm@medialize.de"
+                }
+            ],
+            "description": "Smarty - the compiling PHP template engine",
+            "homepage": "http://www.smarty.net",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2018-09-12 20:54:16"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "davidvanerkelens/siteframework": 20,
+        "davidvanerkelens/sqlframework": 20,
+        "davidvanerkelens/toolboxframework": 20,
+        "davidvanerkelens/autoincluder": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
