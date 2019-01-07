@@ -21,19 +21,37 @@ class ConversationQuestion extends ConversationEntry
 
     /**
      *  The response beloning to this question
-     *  @return ConversationResponse
+     *  @return ConversationResponse | null
      */
-    public function response(): ConversationResponse
+    public function response(): ?ConversationResponse
     {
-        return new ConversationResponse();
+        // Do we have an ID?
+        if ($this->row->fk_response > 0) return $this->backend()->response($this->row->fk_response);  
+
+        // No response
+        return null;
+    }
+
+    /**
+     *  Set the response for this question
+     *  @param  ConversationResponse
+     *  @return ConversationQuestion
+     */
+    public function setReponse(ConversationResponse $response)
+    {
+        // Store response
+        $this->row->fk_response = $response->ID();
+
+        // Done
+        return $this;
     }
 
     /**
      *  The conversation this question belongs to
      *  @return Conversation
      */
-    public function conversation(): Conversation
+    public function conversation(): ?Conversation
     {
-        return new Conversation();
+        return $this->backend()->conversation($this->row->fk_conversation);
     }
 }

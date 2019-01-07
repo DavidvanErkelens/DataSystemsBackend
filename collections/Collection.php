@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-abstract class Collection // add extensions here
+abstract class Collection extends SqlFramework\Entity
 {
     /**
      *  The items in the collection

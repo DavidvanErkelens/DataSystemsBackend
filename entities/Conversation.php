@@ -39,8 +39,53 @@ class Conversation extends Entity
     }
 
     /**
+     *  Add a question to this conversation
+     *  @param  string  
+     *  @return ConversationQuestion
+     */
+    public function addQuestion(string $question): ConversationQuestion
+    {
+        // Create entity
+        $entity = $this->getBackend()->sql()->create('ConversationQuestion', array(
+            'fk_conversation'   =>  $this->ID(),
+            'content'           =>  $question
+        ));
+
+        // Add backend reference
+        $entity->setBackend($this->getBackend());
+
+        // Done
+        return $entity;
+    }
+
+    /**
+     *  Add a response to this conversation
+     *  @param  string  
+     *  @param  ConversationQuestion
+     *  @return ConversationReponse
+     */
+    public function addResponse(string $response, ConversationQuestion $question): ConversationResponse
+    {
+        // Create entity
+        $entity = $this->getBackend()->sql()->create('ConversationResponse', array(
+            'fk_conversation'   =>  $this->ID(),
+            'content'           =>  $response,
+            'fk_question'       =>  $question->ID()
+        ));
+
+        // Add backend reference
+        $entity->setBackend($this->getBackend());
+
+        // Set reference
+        $question->setResponse($entity);
+
+        // Done
+        return $entity;
+    }
+
+    /**
      *  Pass the conversation through the model
-     *  @return ???
+     *  @return string
      */
     public function model()
     {

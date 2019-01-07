@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-abstract class Filter
+abstract class Filter extends SqlFramework\Entity
 {
     /**
      *  Create new filter, based on another one
