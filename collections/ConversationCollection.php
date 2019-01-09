@@ -10,12 +10,5 @@
  */
 class ConversationCollection extends Collection
 {
-    /**
-     *  Construction
-     *  @param  ConversationFilter
-     */
-    public function __construct(ConversationFilter $filter)
-    {
-        // @todo implement
-    }
+    
 }

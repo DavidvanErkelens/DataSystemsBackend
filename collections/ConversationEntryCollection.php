@@ -11,11 +11,19 @@
 class ConversationEntryCollection extends Collection
 {
     /**
-     *  Construction
-     *  @param  ConversationEntryFilter
+     *  Sort by index
+     *  @param  bool
+     *  @return ConversationCollection
      */
-    public function __construct(ConversationEntryFilter $filter)
+    public function sortByIndex($reverse = false): ConversationEntryCollection
     {
-        // @todo implement
+        // Call sort function
+        usort($this->items, function ($value1, $value2) use ($reverse) {
+            if ($reverse) return $value1 < $value2;
+            return $value1 > $value2;
+        });
+
+        // Allow chaining
+        return $this;
     }
 }

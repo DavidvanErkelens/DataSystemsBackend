@@ -17,7 +17,7 @@ class ConversationEntryFilter extends Filter
     public function setConversation(Conversation $conv): ConversationEntryFilter
     {
         // Set it
-        // @todo implement
+        $this->addCondition('fk_conversation = ?', array($conv->ID()));
 
         // allow chaining
         return $this;

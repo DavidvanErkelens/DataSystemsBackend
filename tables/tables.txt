@@ -1,0 +1,24 @@
+Table info:
+
+Conversation:
+    - id
+    - identifier
+
+ConversationQuestion:
+    - id
+    - index
+    - fk_conversation
+    - fk_response
+    - text
+
+ConversationResponse:
+    - id
+    - index
+    - fk_conversation
+    - fk_question
+    - text
+
+ConversationSatisfiedRating:
+    - id
+    - fk_conversation
+    - value

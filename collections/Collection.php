@@ -8,20 +8,19 @@
 /**
  *  Class definition
  */
-abstract class Collection extends SqlFramework\Entity
+abstract class Collection extends SqlFramework\Collection
 {
     /**
-     *  The items in the collection
-     *  @var Entity[]
-     */   
-    protected $items = array();
-
-    /**
-     *  Expose the items
-     *  @return Entity[]
+     *  Set the backend for this collection
+     *  @param  Backend
+     *  @return Collection
      */
-    public function items()
+    public function setBackend(Backend $backend): Collection
     {
-        return $items;
+        // Set backend
+        foreach ($this as $item) $item->setBackend($backend);
+
+        // Allow chaining
+        return $this;
     }
 }

@@ -1,0 +1,1 @@
+{"columns":[{"name":"id","type":"int","null":false,"auto_increment":true},{"name":"idx","type":"int","null":false},{"name":"fk_conversation","type":"int","null":false,"default":0},{"name":"entrytype","type":"enum(\"question\",\"response\")","null":false},{"name":"content","type":"text","null":false}],"primary":"id"}

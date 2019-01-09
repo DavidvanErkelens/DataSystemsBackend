@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-abstract class ConversationEntry extends Entity
+class ConversationEntry extends Entity
 {
     /**
      *  The text of the entry
@@ -16,12 +16,26 @@ abstract class ConversationEntry extends Entity
      */
     public function text(): string
     {
-        return 'abc';
+        return $this->row->content;
     }
 
     /**
      *  The type of the entry
-     *  @return string      question | answer
+     *  @return string      question | response
      */
-    abstract public function type(): string;
+    public function type(): string
+    {
+        // Return row value
+        return $this->row->entrytype;
+    }
+
+    /**
+     *  The index of the entry
+     *  @return int
+     */
+    public function index(): int
+    {
+        // Return row value
+        return $this->row->idx;
+    }
 }

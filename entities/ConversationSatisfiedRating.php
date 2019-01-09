@@ -8,7 +8,7 @@
 /**
  *  Class defintion
  */
-class ConversationRating extends Entity
+class ConversationSatisfiedRating extends Entity
 {
     /**
      *  The rating given
@@ -16,7 +16,7 @@ class ConversationRating extends Entity
      */
     public function rating(): bool
     {
-        return true;
+        return $this->row->value == 'yes';
     }
 
     /**
@@ -25,6 +25,6 @@ class ConversationRating extends Entity
      */
     public function conversation(): Conversation
     {
-        return new Conversation();
+        return $this->backend()->conversation($this->row->fk_conversation);
     }
 }

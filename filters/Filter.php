@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-abstract class Filter extends SqlFramework\Entity
+abstract class Filter extends SqlFramework\Filter
 {
     /**
      *  Create new filter, based on another one
@@ -17,7 +17,13 @@ abstract class Filter extends SqlFramework\Entity
      */
     static public function create(Filter $filter = null): Filter
     {
-        if (is_null($filter)) return new self();
+        // Get the called class
+        $class = get_called_class();
+
+        // If we have no filter, create one
+        if (is_null($filter)) return new $class();
+
+        // Otherwise just return it
         return $filter;
     }
 }
