@@ -88,13 +88,15 @@ class Backend
     /**
      *  Create a new conversation
      *  @param  string  
+     *  @param  string
      *  @return Conversation
      */
-    public function newConversation(string $identifier): Conversation
+    public function newConversation(string $identifier, string $source): Conversation
     {
         // Create entity
         $entity =  $this->sql->create('Conversation', array(
-            'identifier'    =>  $identifier
+            'identifier'    =>  $identifier,
+            'source'        =>  $source
         ));
 
         // Set backend

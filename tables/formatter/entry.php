@@ -30,13 +30,27 @@ echo json_encode(array(
         ),
         array(
             'name'              =>      'entrytype',
-            'type'              =>      'enum("question","response")',
+            'type'              =>      'enum("system","user")',
             'null'              =>      false
         ),
-        
         array(
             'name'              =>      'content',
             'type'              =>      'text',
+            'null'              =>      false
+        ),
+        array(
+            'name'              =>      'act',
+            'type'              =>      'varchar(255)',
+            'null'              =>      true
+        ),
+        array(
+            'name'              =>      'cam',
+            'type'              =>      'varchar(255)',
+            'null'              =>      true
+        ),
+        array(
+            'name'              =>      'turnidx',
+            'type'              =>      'int',
             'null'              =>      false
         ),
         // array(

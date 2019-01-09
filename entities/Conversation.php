@@ -58,16 +58,18 @@ class Conversation extends Entity
      *  Add a question to this conversation
      *  @param  string  
      *  @param  int
-     *  @return ConversationQuestion
+     *  @param  int
+     *  @return ConversationEntry
      */
-    public function addQuestion(string $question, int $index): ConversationEntry
+    public function addUserEntry(string $text, int $index, int $turn): ConversationEntry
     {
         // Create entity
         $entity = $this->backend()->sql()->create('ConversationEntry', array(
             'fk_conversation'   =>  $this->ID(),
-            'content'           =>  $question,
-            'entrytype'         =>  'question',
-            'idx'               =>  $index
+            'content'           =>  $text,
+            'entrytype'         =>  'user',
+            'idx'               =>  $index,
+            'turnidx'           =>  $turn
         ));
 
         // Add backend reference
@@ -81,16 +83,18 @@ class Conversation extends Entity
      *  Add a response to this conversation
      *  @param  string  
      *  @param  int
-     *  @return ConversationReponse
+     *  @param  int
+     *  @return ConversationEntry
      */
-    public function addResponse(string $response, int $index): ConversationEntry
+    public function addSystemEntry(string $text, int $index, int $turn): ConversationEntry
     {
         // Create entity
         $entity = $this->backend()->sql()->create('ConversationEntry', array(
             'fk_conversation'   =>  $this->ID(),
-            'content'           =>  $response,
-            'entrytype'         =>  'response',
-            'idx'               =>  $index
+            'content'           =>  $text,
+            'entrytype'         =>  'system',
+            'idx'               =>  $index,
+            'turnidx'           =>  $turn
         ));
 
         // Add backend reference
@@ -118,6 +122,45 @@ class Conversation extends Entity
 
         // Done
         return $entity;
+    }
+
+    /**
+     *  Add ground truth value
+     *  @param  bool
+     *  @return ConversationSatisfiedGroundTruthRating
+     */
+    public function addSatisfiedGroundTruthRating(bool $satisfied): ConversationSatisfiedGroundTruthRating
+    {
+        // Create entity
+        $entity = $this->backend()->sql()->create('ConversationSatisfiedGroundTruthRating', array(
+            'fk_conversation'   =>  $this->ID(),
+            'value'             =>  $satisfied ? 'yes' : 'no'
+        ));
+
+        // Add backend reference
+        $entity->setBackend($this->backend());
+
+        // Done
+        return $entity;
+    }
+
+    /**
+     *  Was this conversation rated as satisfied?
+     *  @return bool
+     */
+    public function satisfaction(): bool
+    {
+        // Create filter
+        $filter = new ConversationSatisfiedGroundTruthRatingFilter();
+
+        // Set conversation
+        $filter->setConversation($this);
+
+        // Loop over collection
+        foreach ($this->backend()->sql()->getCollection('ConversationSatisfiedGroundTruthRating', $filter) as $item) return $item->value();
+
+        // Nothing found - this should not happen
+        return false;
     }
 
     /**
@@ -168,8 +211,11 @@ class Conversation extends Entity
         foreach ($entries as $e)
         {
             // Format entry
-            $entry = ($e->type() == 'question' ? '[Q] ' : '[A] ');
+            $entry = ($e->type() == 'system' ? '[S' : '[U');
             
+            // Add turn index
+            $entry .= "-{$e->turnID()}] ";
+
             // Add the text
             $entry .= $e->text();
         

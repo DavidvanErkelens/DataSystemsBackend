@@ -39,14 +39,4 @@ abstract class Entity extends SqlFramework\Entity
         // Allow chaining
         return $this;
     }
-
-    /**
-     *  Expose ID
-     *  @return int
-     */
-    public function ID(): int
-    {
-        // Return member
-        return 1;
-    }
 }
