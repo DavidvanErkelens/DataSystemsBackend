@@ -148,7 +148,7 @@ class Conversation extends Entity
      *  Was this conversation rated as satisfied?
      *  @return bool
      */
-    public function satisfaction(): bool
+    public function satisfied(): bool
     {
         // Create filter
         $filter = new ConversationSatisfiedGroundTruthRatingFilter();
@@ -157,7 +157,7 @@ class Conversation extends Entity
         $filter->setConversation($this);
 
         // Loop over collection
-        foreach ($this->backend()->sql()->getCollection('ConversationSatisfiedGroundTruthRating', $filter) as $item) return $item->value();
+        foreach ($this->backend()->sql()->getCollection('ConversationSatisfiedGroundTruthRating', $filter) as $item) return $item->rating();
 
         // Nothing found - this should not happen
         return false;

@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-abstract class Collection extends SqlFramework\Collection
+abstract class Collection extends SqlFramework\Collection implements Countable
 {
     /**
      *  Set the backend for this collection
@@ -22,5 +22,15 @@ abstract class Collection extends SqlFramework\Collection
 
         // Allow chaining
         return $this;
+    }
+
+    /**
+     *  Count values
+     *  @return int
+     */
+    public function count(): int
+    {
+        // return number of items
+        return count($this->items);
     }
 }

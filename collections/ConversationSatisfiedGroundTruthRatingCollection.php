@@ -8,7 +8,7 @@
 /**
  *  Class definition
  */
-class ConversationSatisfiedRatingCollection extends Collection
+class ConversationSatisfiedGroundTruthRatingCollection extends Collection
 {
 
 }

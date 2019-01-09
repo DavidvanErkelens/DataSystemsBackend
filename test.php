@@ -1,11 +1,22 @@
 <?php
 
+// Load external libraries
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$autolaoder = new AutoIncluder(__DIR__, array(__DIR__ . '/vendor'));
-$backend = new Backend();
+// Load config
+require_once 'config.php';
 
+// Make sure classes get included when necessary
+$autoloader = new AutoIncluder(__DIR__, array(__DIR__ . '/vendor'));
 
+// Create backend with included config
+$backend = new Backend($config);
 
-$test = new Conversation();
-var_dump($test->model());
+// Load conversations from database
+$conversations = $backend->conversations();
+
+// Filter on satisfied conversations
+$conversations->setSatisfied(true);
+
+// Show all identifiers
+foreach ($conversations as $c) echo $c->identifier() . PHP_EOL;
