@@ -42,7 +42,14 @@ class Backend
      */
     public function conversation(int $id): ?Conversation
     {
-        return $this->sql->getEntity('Conversation', $id)->setBackend($this);
+        // Get conversation
+        $conv = $this->sql->getEntity('Conversation', $id);
+
+        // Do we have a value
+        if (is_null($conv)) return null;
+
+        // Return item
+        return $conv->setBackend($this);
     }
 
     /**
