@@ -18,6 +18,10 @@ echo json_encode(array(
             'type'              =>      'varchar(255)',
             'null'              =>      false
         ),
+        array(
+            'name'              =>      'runtime',
+            'type'              =>      'decimal(10,2)'
+        )
         // array(
         //     'name'              =>  'last_name',
         //     'type'              =>  'varchar(255)',

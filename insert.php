@@ -24,7 +24,7 @@ $backend = new Backend($config);
 
 
 $types = array('sat', 'dsat');
-$basedir = '/home/david/Desktop/data systems/UserSat';
+$basedir = '/home/david/Desktop/Troep/data systems/UserSat';
 
 foreach ($types as $type)
 {
@@ -48,67 +48,81 @@ foreach ($types as $type)
 
         $idx = 0;
 
-        $conv = $backend->newConversation($filename, 'restaurant');
+        // $conv = $backend->newConversation($filename, 'restaurant');
 
-        // $conv = $backend->conversationByIdentifier($filename);
+        $conv = $backend->conversationByIdentifier($filename);
+
+        $time = 0.0;
 
         foreach ($turns as $turn)
         {
             $input = $turn['input'];
+            $timein = $input['end-time'];
+
             $output = $turn['output'];
-            $turnidx = (int) $turn['turn-index'];
+            $timeout = $output['end-time'];
+
+            $time = max($time, $timein, $timeout);
+
             
-            $system = $output['transcript'];
+            
+            // $turnidx = (int) $turn['turn-index'];
+            
+            // $system = $output['transcript'];
 
-            $responses = $input['live']['asr-hyps'];
-            // var_dump($responses);
+            // $responses = $input['live']['asr-hyps'];
+            // // var_dump($responses);
 
-            usort($responses, function($one, $two) {
-                return $one['score'] < $two['score'];
-            });
+            // usort($responses, function($one, $two) {
+            //     return $one['score'] < $two['score'];
+            // });
 
-            $conv->addSystemEntry($system, $idx++, $turnidx);
-            $conv->addUserEntry($responses[0]['asr-hyp'], $idx++, $turnidx);
+            // $conv->addSystemEntry($system, $idx++, $turnidx);
+            // $conv->addUserEntry($responses[0]['asr-hyp'], $idx++, $turnidx);
 
         }
+
+        $conv->setRuntime($time);
+
+        // return;
         
-        $labelfile = $dir->getPathname() . '/label.json';
+        // $labelfile = $dir->getPathname() . '/label.json';
 
-        $data = json_decode(file_get_contents($labelfile), true);
+        // $data = json_decode(file_get_contents($labelfile), true);
 
-        $turns = $data['turns'];
+        // $turns = $data['turns'];
 
-        foreach ($turns as $turn)
-        {
-            $turnidx = (int) $turn['turn-index'];
+        // foreach ($turns as $turn)
+        // {
+        //     $turnidx = (int) $turn['turn-index'];
 
-            // echo $turnidx . PHP_EOL;
+        //     // echo $turnidx . PHP_EOL;
             
-            // var_dump(array_keys($turn));
+        //     // var_dump(array_keys($turn));
 
-            $act = count($turn['semantics']['json']) > 0 ? $turn['semantics']['json'][0]['act'] : null;
+        //     $act = count($turn['semantics']['json']) > 0 ? $turn['semantics']['json'][0]['act'] : null;
 
-            $cam = $turn['semantics']['cam'];
+        //     $cam = $turn['semantics']['cam'];
 
-            // Get entries to add to
-            $filter = new ConversationEntryFilter();
+        //     // Get entries to add to
+        //     $filter = new ConversationEntryFilter();
 
-            // Set properties
-            $filter->setTurnIndex($turnidx);
+        //     // Set properties
+        //     $filter->setTurnIndex($turnidx);
 
-            // Loop
-            foreach ($conv->entries($filter) as $entry)
-            {
-                // echo $entry->ID() . PHP_EOL;
-                if ($act) $entry->setAct($act);
-                if ($cam) $entry->setCam($cam);
-            }
+        //     // Loop
+        //     foreach ($conv->entries($filter) as $entry)
+        //     {
+        //         // echo $entry->ID() . PHP_EOL;
+        //         if ($act) $entry->setAct($act);
+        //         if ($cam) $entry->setCam($cam);
+        //     }
 
-            // break;
+        //     // break;
 
-        }
+        // }
 
-        $conv->addSatisfiedGroundTruthRating($type == 'sat');
+        // $conv->addSatisfiedGroundTruthRating($type == 'sat');
 
     }
 }

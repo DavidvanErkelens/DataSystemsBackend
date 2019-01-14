@@ -15,8 +15,18 @@ $backend = new Backend($config);
 // Load conversations from database
 $conversations = $backend->conversations();
 
-// Filter on satisfied conversations
-$conversations->setSatisfied(true);
+$conversations->orderByRuntime(true);
 
-// Show all identifiers
-foreach ($conversations as $c) echo $c->identifier() . PHP_EOL;
+foreach ($conversations as $c)
+{
+    echo "{$c->identifier()}: {$c->runtime()}: ";
+    if ($c->satisfied()) echo "SAT";
+    else echo "NOT SAT";
+    echo PHP_EOL;
+}
+
+// // Filter on satisfied conversations
+// $conversations->setSatisfied(true);
+
+// // Show all identifiers
+// foreach ($conversations as $c) echo $c->identifier() . PHP_EOL;

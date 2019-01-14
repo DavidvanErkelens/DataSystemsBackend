@@ -13,7 +13,7 @@ class ConversationCollection extends Collection
     /**
      *  Was is satisfied?
      *  @param  boolean
-     *  @return ConversationFilter
+     *  @return ConversationCollection
      */
     public function setSatisfied(bool $value): ConversationCollection
     {
@@ -23,6 +23,23 @@ class ConversationCollection extends Collection
         });
 
         // allow chaining
+        return $this;
+    }
+
+    /**
+     *  Order by runtime
+     *  @param  boolean
+     *  @return ConversationCollection
+     */
+    public function orderByRuntime(bool $desc = false): ConversationCollection
+    {
+        // Sort items
+        usort($this->items, function($value1, $value2) use ($desc) {
+            if ($desc) return $value1->runtime() < $value2->runtime();
+            return $value1->runtime() > $value2->runtime();
+        });
+
+        // Allow chaining
         return $this;
     }
 }

@@ -239,4 +239,31 @@ class Conversation extends Entity
         // Return string value
         return $conversation;
     }
+
+    /**
+     *  Get the runtime of this conversation
+     *  @return float
+     */
+    public function runtime(): float
+    {
+        // If member set?
+        if (strlen($this->row->runtime) == 0) return 0.0;
+
+        // Return member
+        return $this->row->runtime;
+    }
+
+    /**
+     *  Set the runtime
+     *  @param  float
+     *  @return Conversation
+     */
+    public function setRuntime(float $time): Conversation
+    {
+        // Set member
+        $this->row->runtime = $time;
+
+        // Allow chaining
+        return $this;
+    }
 }
