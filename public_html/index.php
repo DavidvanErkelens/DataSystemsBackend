@@ -1,5 +1,8 @@
 <?php
 
+// Make sure a session is running
+session_start();
+
 // Require Composer files
 require_once(__DIR__ . '/../vendor/autoload.php');
 
@@ -34,7 +37,7 @@ if (substr($path, -1, 1) == '/') $path = substr($path, 0, -1);
 $page = $site->getPage($path);
 
 // Are we parsing a POST call?
-if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] === 'POST' && $page instanceof PostPage) $page->process($_POST); 
+if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] === 'POST' && $page instanceof PostPage) $page->process($_POST)->render(); 
 
 // Return contents 
 else $page->render();

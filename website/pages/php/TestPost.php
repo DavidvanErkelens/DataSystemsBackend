@@ -11,9 +11,9 @@ class TestPost extends PostPage
     /**
      *  Process post call
      *  @param  array
-     *  @return ???
+     *  @return BasePage
      */
-    function process(array $vars = array())
+    function process(array $vars = array()): BasePage
     {
         echo 'Process called with: ' . PHP_EOL;
         var_dump($vars);

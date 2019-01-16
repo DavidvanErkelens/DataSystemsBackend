@@ -21,5 +21,9 @@ class IndexPage extends BasePage
 
         // Add conversations
         $smarty->assign('convs', $this->website()->backend()->conversations());
+
+        // Should we display a message?
+        $smarty->assign('act', (is_null($this->last_action) ? '' : $this->last_action));
+        $smarty->assign('rate', (is_null($this->last_rate) ? '' : $this->last_rate));
     }
 }

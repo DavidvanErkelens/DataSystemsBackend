@@ -31,21 +31,11 @@ class RatePage extends PostPage
         // Make sure it exists
         $conv = $this->website()->backend()->conversation($conv);
 
+        // If it does not exist, we're going back home
+        if (is_null($conv)) $this->redirect = '/index';
+
         // Store
         $this->conversation = $conv;
-    }
-
-    /**
-     *  Should this page redirect?
-     *  @return  string | null
-     */
-    public function redirect(): ?string
-    {
-        // Do we have a conversation?
-        if (is_null($this->conversation)) return '/index';
-
-        // No redirect by default
-        return null;
     }
 
     /**
@@ -54,27 +44,36 @@ class RatePage extends PostPage
      */
     protected function initialize(\Smarty $smarty)
     {
+        // Assign conversation information
         $smarty->assign('id', $this->conversation->identifier());
-        // $smarty->assign()
+        $smarty->assign('conversation', $this->conversation->stringify(true));
     }
 
     /**
      *  Process post call
      *  @param  array
-     *  @return ???
+     *  @return BasePage
      */
-    function process(array $vars = array())
+    function process(array $vars = array()): BasePage
     {
         // Get value
-        if (array_key_exists('rating', $vars))
+        if (array_key_exists('rating', $vars) && in_array($vars['rating'], array('yes','no')))
         {
             // Parse value
             $good = $vars['rating'] == 'yes';
 
             // Add value
             $this->conversation->addSatisfiedRating($good);
+    
+            // Store what we did in session
+            $_SESSION['last_act'] = 'rate';
+            $_SESSION['rate'] = $this->conversation->identifier();
         }
 
-        // Redirect or so?
+        // Redirect to home
+        $this->redirect = '/index';
+
+        // Return this page to redirect (done by render function)
+        return $this;
     }
 }

@@ -200,8 +200,21 @@ class Conversation extends Entity
      */
     public function __toString(): string
     {
+        return $this->stringify();
+    }
+
+    /**
+     *  Get string representation of Conversation
+     *  @param  boolean   Use HTML line endings?
+     *  @return string
+     */
+    public function stringify(bool $html = false): string
+    {
+        // Format line end
+        $lineend = $html ? '<br>' : PHP_EOL;
+
         // Variable to store conversation in
-        $conversation = "Conversation (identifier '{$this->identifier()}'):" . PHP_EOL . PHP_EOL;
+        $conversation = "Conversation (identifier '{$this->identifier()}'):" . $lineend . $lineend;
 
         // Get the entries and make sure that they are sorted
         $entries = $this->entries();
@@ -220,7 +233,7 @@ class Conversation extends Entity
             $entry .= $e->text();
         
             // Add to conversation 
-            $conversation .= $entry . PHP_EOL;
+            $conversation .= $entry . $lineend;
         }
 
         // Keep track of satisfied / dissatisfied ratings
@@ -234,7 +247,7 @@ class Conversation extends Entity
         }
 
         // Add statement regarding satisfaction rate
-        $conversation .= PHP_EOL . "Conversation has {$satisfied} satisfied ratings and {$dissatisfied} dissatisfied ratings" . PHP_EOL;
+        $conversation .= $lineend . "Conversation has {$satisfied} satisfied ratings and {$dissatisfied} dissatisfied ratings" . $lineend;
 
         // Return string value
         return $conversation;
