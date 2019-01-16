@@ -4,13 +4,16 @@ echo json_encode(array(
         'pages' => array(
             array(
                 'class' =>  'IndexPage',
-                'path'  =>  'index',
-                'params'=>  1
+                'path'  =>  'index'
             ),
             array(
                 'class' => 'RatePage',
                 'path'  => 'rate',
                 'params'=>  1
+            ),
+            array(
+                'class' =>  'LoginPage',
+                'path'  =>  'login'
             )
         )
     )

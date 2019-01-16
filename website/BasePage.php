@@ -40,6 +40,16 @@ abstract class BasePage extends SiteFramework\Page
         // Unset session settings
         unset($_SESSION['last_act']);
         unset($_SESSION['rate']);
+
+        // Set the redirect if we need to login
+        if ($this->loginRequired() && !$this->website()->loggedIn()) 
+        {
+            // Set page we need to redirect back to
+            $_SESSION['redirect_after_login'] = '/index';
+
+            // Set redirect URL
+            $this->redirect = '/login';
+        }
     }
 
    /**
@@ -62,5 +72,15 @@ abstract class BasePage extends SiteFramework\Page
 
         // Return the location
         return __DIR__ . "/pages/tpl/{$class}.tpl";
+    }
+
+    /**
+     *  Do we require a login for this page?
+     *  @return boolean
+     */
+    public function loginRequired(): bool
+    {
+        // By default, we don't require a login
+        return false;
     }
 }

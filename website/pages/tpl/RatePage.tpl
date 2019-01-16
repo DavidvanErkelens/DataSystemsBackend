@@ -1,4 +1,3 @@
-
 {extends file='../../BaseTemplate.tpl'}
 {block name=body}
     Rating conversation <b>{$id}</b> <br ><br>

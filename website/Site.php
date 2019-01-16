@@ -16,6 +16,7 @@ class Site extends SiteFramework\Website
      */
     private $backend = null;
 
+
     /**
      *  Get the backend object
      *  @return Backend | null
@@ -38,5 +39,15 @@ class Site extends SiteFramework\Website
 
         // Done
         return $this;
+    }
+
+    /**
+     *  Are we logged in?
+     *  @return bool
+     */
+    public function loggedIn(): bool
+    {
+        // Check session var for now
+        return array_key_exists('login', $_SESSION) && $_SESSION['login'] == 'yes';
     }
 }

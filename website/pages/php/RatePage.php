@@ -79,4 +79,10 @@ class RatePage extends PostPage
         // Return this page to redirect (done by render function)
         return $this;
     }
+
+    public function loginRequired(): bool
+    {
+        // return false;
+        return true;
+    }
 }
