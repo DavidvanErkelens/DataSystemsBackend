@@ -14,6 +14,10 @@ echo json_encode(array(
             array(
                 'class' =>  'LoginPage',
                 'path'  =>  'login'
+            ),
+            array(
+                'class' =>  'LogoutPage',
+                'path'  =>  'logout'
             )
         )
     )

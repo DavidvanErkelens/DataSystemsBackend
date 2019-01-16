@@ -25,7 +25,7 @@ abstract class PostPage extends BasePage
 
     /**
      *  Should we redirect after the POST?
-     *  @return string|null
+     *  @return string | null
      */
     public function redirect(): ?string
     {

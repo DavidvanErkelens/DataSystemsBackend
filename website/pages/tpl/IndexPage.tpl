@@ -2,6 +2,10 @@
 {block name=body}
     We have the following conversations: <br><br>
 
+    {if $loggedin}
+        <a href="/logout">LOG OUT</a><br ><br>
+    {/if}
+
     {if $act == 'rate'}
         Thanks for rating conversation <b>{$rate}</b>
     {/if}

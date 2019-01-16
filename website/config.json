@@ -1,1 +1,1 @@
-{"site":{"pages":[{"class":"IndexPage","path":"index"},{"class":"RatePage","path":"rate","params":1},{"class":"LoginPage","path":"login"}]}}
+{"site":{"pages":[{"class":"IndexPage","path":"index"},{"class":"RatePage","path":"rate","params":1},{"class":"LoginPage","path":"login"},{"class":"LogoutPage","path":"logout"}]}}
