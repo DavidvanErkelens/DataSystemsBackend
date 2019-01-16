@@ -48,7 +48,7 @@ abstract class BasePage extends SiteFramework\Page
      */
     protected function initialize(\Smarty $smarty)
     {
-        $smarty->assign('title', "ABC");
+        $smarty->assign('title', "ING DSP System");
     }
 
     /**

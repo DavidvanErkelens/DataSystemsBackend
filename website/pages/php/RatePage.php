@@ -44,6 +44,9 @@ class RatePage extends PostPage
      */
     protected function initialize(\Smarty $smarty)
     {
+        // Call parent
+        parent::initialize($smarty);
+
         // Assign conversation information
         $smarty->assign('id', $this->conversation->identifier());
         $smarty->assign('conversation', $this->conversation->stringify(true));
