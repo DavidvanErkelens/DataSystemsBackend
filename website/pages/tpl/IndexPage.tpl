@@ -1,6 +1,6 @@
 {extends file='../../BaseTemplate.tpl'}
 {block name=body}
-    Hier komt de titel: {$title}. We have the following conversations: <br><br>
+    We have the following conversations: <br><br>
 
     {if $act == 'rate'}
         Thanks for rating conversation <b>{$rate}</b>

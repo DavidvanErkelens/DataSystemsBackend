@@ -10,4 +10,6 @@
         <input type="radio" name="rating" value="no" > No<br>
         <input type="submit" value="Submit">
     </form>
+
+    <a href="/index">Go back home</a>
 {/block}

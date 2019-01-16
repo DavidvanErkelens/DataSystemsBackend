@@ -242,12 +242,18 @@ class Conversation extends Entity
         // Loop over ratings
         foreach ($this->satisfiedRatings() as $r)
         {
+            // Add scores
             if ($r->rating()) $satisfied++;
             else $dissatisfied++;
         }
 
         // Add statement regarding satisfaction rate
-        $conversation .= $lineend . "Conversation has {$satisfied} satisfied ratings and {$dissatisfied} dissatisfied ratings" . $lineend;
+        $conversation .= $lineend . "Conversation has {$satisfied} satisfied rating(s) and {$dissatisfied} dissatisfied rating(s)" . $lineend;
+
+        // What is the ground truth?
+        if ($this->satisfied()) $conversation .= "This conversation was rated as satisfying (ground truth)" . $lineend;
+        else if ($html)         $conversation .= "This conversation was rated as <b>not</b> satisfying (ground truth)" . $lineend;
+        else                    $conversation .= "This conversation was rated as **not** satisfying (ground truth)" . $lineend;
 
         // Return string value
         return $conversation;
