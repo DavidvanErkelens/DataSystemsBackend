@@ -23,6 +23,12 @@ abstract class BasePage extends SiteFramework\Page
     protected $last_rate = null;
 
     /**
+     *  Store the result of the last operation
+     *  @var mixed
+     */
+    protected $last_result = null;
+
+    /**
      *  Should we redirect after the post?
      *  @var string | null
      */
@@ -56,10 +62,12 @@ abstract class BasePage extends SiteFramework\Page
         // Store last action (if applicable)
         if (array_key_exists('last_act', $_SESSION)) $this->last_action = $_SESSION['last_act'];
         if (array_key_exists('rate', $_SESSION)) $this->last_rate = $_SESSION['rate'];
+        if (array_key_exists('result', $_SESSION)) $this->last_result = $_SESSION['result'];
 
         // Unset session settings
         unset($_SESSION['last_act']);
         unset($_SESSION['rate']);
+        unset($_SESSION['result']);
 
         // Set the redirect if we need to login
         if ($this->loginRequired() && !$this->website()->loggedIn()) 

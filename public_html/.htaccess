@@ -1,3 +1,8 @@
+AuthUserFile /home/david/.htpasswd
+AuthType Basic
+AuthName "ING Application Group H1"
+Require valid-user
+
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
