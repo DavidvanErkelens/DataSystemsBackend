@@ -28,8 +28,11 @@ class RatePage extends PostPage
         // Get conversation
         $conv = $this->parameter(0);
 
+        // Null?
+        if (is_null($conv)) $conv = $this->website()->backend()->conversation(456);
+
         // Make sure it exists
-        $conv = $this->website()->backend()->conversation($conv);
+        else $conv = $this->website()->backend()->conversation($conv);
 
         // If it does not exist, we're going back home
         if (is_null($conv)) $this->redirect = '/index';
@@ -78,11 +81,5 @@ class RatePage extends PostPage
 
         // Return this page to redirect (done by render function)
         return $this;
-    }
-
-    public function loginRequired(): bool
-    {
-        // return false;
-        return true;
     }
 }

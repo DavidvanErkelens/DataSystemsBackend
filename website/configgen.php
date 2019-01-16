@@ -9,7 +9,7 @@ echo json_encode(array(
             array(
                 'class' => 'RatePage',
                 'path'  => 'rate',
-                'params'=>  1
+                // 'params'=>  1
             ),
             array(
                 'class' =>  'LoginPage',
@@ -18,6 +18,14 @@ echo json_encode(array(
             array(
                 'class' =>  'LogoutPage',
                 'path'  =>  'logout'
+            ),
+            array(
+                'class' =>  'AdminPanel',
+                'path'  =>  'admin'
+            ),
+            array(
+                'class' =>  'UploadPage',
+                'path'  =>  'upload'
             )
         )
     )
