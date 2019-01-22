@@ -1,0 +1,54 @@
+diff --git a/feature_eng.py b/feature_eng.py
+index fef2701..9a7d935 100644
+--- a/feature_eng.py
++++ b/feature_eng.py
+@@ -11,7 +11,7 @@ import os
+ import glob
+ import pandas as pd
+ import nltk
+-nltk.download('vader_lexicon')
++# nltk.download('vader_lexicon')
+ from nltk.sentiment.vader import SentimentIntensityAnalyzer
+ 
+ text_files_dsat = glob.glob("../conversations/dsat/*.txt")
+@@ -133,7 +133,7 @@ def main():
+         os.system("python train.py")
+         
+     else:
+-        print("Predicting...")
++        # print("Predicting...")
+         file = sys.argv[2]
+         file_name = file.split('/')[-1].split('.txt')[0]
+         id_number,lines = read_file(file)
+@@ -145,7 +145,8 @@ def main():
+                                                'tot_neg_sen':tot_neg_sen})
+         features_df = pd.DataFrame(features_df).transpose()
+         features_df.to_csv(file_name + ".csv",index=False)
+-        os.system("python predict.py " + file_name)
++        dir_path = os.path.dirname(os.path.realpath(__file__))
++        os.system("python3 " + dir_path + "/predict.py " + file_name)
+         
+ if __name__ == "__main__":
+     main()
+diff --git a/predict.py b/predict.py
+index 71f87c7..e2b828b 100644
+--- a/predict.py
++++ b/predict.py
+@@ -6,6 +6,7 @@ Created on Fri Jan 11 15:15:10 2019
+ @author: kiraliang
+ """
+ import pickle
++import os
+ import pandas as pd
+ import json
+ import sys
+@@ -14,7 +15,8 @@ MODEL_PATH = "./LR_model.sav"
+ THRESHOLD = 50
+ 
+ def load_model():
+-    model = pickle.load(open(MODEL_PATH, 'rb'))
++    dir_path = os.path.dirname(os.path.realpath(__file__))
++    model = pickle.load(open(dir_path + '/' + MODEL_PATH, 'rb'))
+     
+     return model
+ 
