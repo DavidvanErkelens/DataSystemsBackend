@@ -359,7 +359,7 @@ class Conversation extends Entity
         passthru($command);
 
         // Fetch output
-        $output = ob_get_clean();
+        $stdoutput = ob_get_clean();
 
         // Remove temporary files
         unlink($file);
@@ -369,10 +369,17 @@ class Conversation extends Entity
         unlink(getcwd() . '/' . basename($file) . '.csv');
 
         // Decode output (JSON)
-        $output = @json_decode($output, true);
+        $output = @json_decode($stdoutput, true);
 
         // Valid output?
-        if ($output === null) return null;
+        if ($output === null) 
+        {
+            // For debugging purposes, trigger error about failure
+            trigger_error("Decoding of model JSON failed, output: {$stdoutput}");
+            
+            // Nothing to store
+            return null;
+        }
 
         // Calculate score
         $score = floatval($output['sat_score']) / 100.0;
