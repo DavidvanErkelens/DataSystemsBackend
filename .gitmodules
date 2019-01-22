@@ -1,0 +1,3 @@
+[submodule "bin/DSP_model"]
+	path = bin/DSP_model
+	url = git@github.com:KRliang04/DSP_model
