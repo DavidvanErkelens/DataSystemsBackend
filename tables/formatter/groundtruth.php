@@ -1,15 +1,4 @@
 <?php
-
-/**
- * 
-
- ConversationSatisfiedRating:
-    - id
-    - fk_conversation
-    - value
-
- */
-
 echo json_encode(array(
     'columns'   =>  array(
         array(

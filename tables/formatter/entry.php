@@ -1,13 +1,5 @@
 <?php
 
-/**
- *     - id
-    - index
-    - fk_conversation
-    - fk_response
-    - text
-
- */
 
 echo json_encode(array(
     'columns'   =>  array(
