@@ -9,9 +9,20 @@ require_once 'config.php';
 // Make sure classes get included when necessary
 $autoloader = new AutoIncluder(__DIR__, array(__DIR__ . '/vendor'));
 
-// Create backend with included config
+// // Create backend with included config
 $backend = new Backend($config);
-$backend->importZip('/home/david/Desktop/satmeuk1.zip');
+
+foreach ($backend->conversations() as $c) 
+{
+    echo $c->ID() . '    ';
+    $c->runModelRating();
+}
+
+// $conv = $backend->conversation(790);
+
+// $conv->runModelRating(true);
+
+// $backend->importZip('/home/david/Desktop/satmeuk1.zip');
 
 // Load conversations from database
 // $conversations = $backend->conversations();
