@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 panel twocol">
-                <h2>Maybe img of the chatbot</h2>
+                <h2>Chatbot image</h2>
                 <p>This is some text.</p>
                 </div>
                 
