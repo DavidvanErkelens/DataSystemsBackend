@@ -286,6 +286,26 @@ class Conversation extends Entity
     }
 
     /**
+     *  Get the average model rating
+     *  @return  float
+     */
+    public function averageModelRating(): float
+    {
+        // Keep track of score and total
+        $score = 0.0; $total = 0;
+
+        // Loop over ratings
+        foreach ($this->modelRatings() as $r)
+        {
+            // Increment counters
+            $total += 1; $score += $r->rating();
+        }
+
+        // Return average value
+        return $score / $total;
+    }
+
+    /**
      *  Get the model ratings for this conversation
      *  @return ConversationModelRatingCollection
      */
