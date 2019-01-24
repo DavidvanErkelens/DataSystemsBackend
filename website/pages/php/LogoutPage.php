@@ -20,6 +20,9 @@ class LogoutPage extends BasePage
 
         // Log out
         unset($_SESSION['login']);
+
+        // Remove rated units
+        unset($_SESSION['rated']);
     }
 
     /**

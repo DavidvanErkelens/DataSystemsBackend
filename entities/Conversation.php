@@ -322,6 +322,73 @@ class Conversation extends Entity
     }
 
     /**
+     *  Get the annotator ratings for this conversation
+     *  @return ConversationAnnotatorRatingCollection
+     */
+    public function annotatorRatings(ConversationAnnotatorRatingFilter $filter = null): ConversationAnnotatorRatingCollection
+    {
+        // Make sure filter exists
+        $filter = ConversationAnnotatorRatingFilter::create($filter);
+        
+        // Add condition
+        $filter->setConversation($this);
+
+        // Return collection
+        return $this->backend()->sql()->getCollection('ConversationAnnotatorRating', $filter)->setBackend($this->backend());
+    }
+
+    /**
+     *  Add an annotator rating to this conversation
+     *  @param  int     rating
+     *  @param  string  the reason
+     *  @return ConversationAnnotatorRating
+     */
+    public function addAnnotatorRating(int $rating, string $reason): ConversationAnnotatorRating
+    {
+        // Create entity
+        $entity = $this->backend()->sql()->create('ConversationAnnotatorRating', array(
+            'fk_conversation'   =>  $this->ID(),
+            'satisfaction'      =>  $rating,
+            'reason'            =>  $reason
+        ));
+
+        // Add backend reference
+        $entity->setBackend($this->backend());
+
+        // Done
+        return $entity;
+    }
+
+    /**
+     *  Get the average annotator rating for this conversation
+     *  @return float
+     */
+    public function averageAnnotatorRating(): float
+    {
+        // Get the annotator ratings
+        $ratings = $this->annotatorRatings();
+
+        // Store total
+        $total = 0;
+
+        // Calculate total
+        foreach ($ratings as $r) $total += $r->rating();
+
+        // Return average
+        return $total / count($ratings);
+    }
+
+    /**
+     *  Was this conversation rated as satisfied by the annotators?
+     *  @return boolean
+     */
+    public function satisfiedAnnotators(): bool
+    {
+        // Larger than threshold?
+        return $this->averageAnnotatorRating() > 2.5;
+    }
+
+    /**
      *  Run this conversation trough the model
      *  @param  boolean         should we also run if there already exists a rating?
      *  @return ConversationModelRating | null

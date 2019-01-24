@@ -16,6 +16,12 @@ class RatePage extends PostPage
      */
     private $conversation = null;
 
+    /**
+     *  All conversation that should be rated for the demo
+     *  @var array
+     */
+    private $testConversations = array(456, 458, 460);
+
 
     /**
      *  Constructor
@@ -25,23 +31,15 @@ class RatePage extends PostPage
         // Call parent
         parent::__construct($site, $path, $params);
 
-        // Get a conversation
-        $this->conversation = $this->website()->backend()->conversation(456);
+        // Get different between rate arrays
+        if (array_key_exists('rated', $_SESSION)) $diff = array_diff($this->testConversations, $_SESSION['rated']);
+        else $diff = $this->testConversations;
 
-        // // Get conversation
-        // $conv = $this->parameter(0);
+        // Do we have something to rate?
+        if (count($diff) > 0) $this->conversation = $this->website()->backend()->conversation(array_shift($diff));
 
-        // // Null?
-        // if (is_null($conv)) $conv = $this->website()->backend()->conversation(456);
-
-        // // Make sure it exists
-        // else $conv = $this->website()->backend()->conversation($conv);
-
-        // // If it does not exist, we're going back home
-        // if (is_null($conv)) $this->redirect = '/index';
-
-        // // Store
-        // $this->conversation = $conv;
+        // Otherwise go to thanks page
+        else $this->redirect = '/thanks';
     }
 
     /**
@@ -65,22 +63,37 @@ class RatePage extends PostPage
      */
     function process(array $vars = array()): BasePage
     {
-        // Get value
-        if (array_key_exists('rating', $vars) && in_array($vars['rating'], array('yes','no')))
-        {
-            // Parse value
-            $good = $vars['rating'] == 'yes';
+        // Get satisfaction rating
+        $rating = (int) $vars['satisfaction'];
 
-            // Add value
-            $this->conversation->addSatisfiedRating($good);
-    
-            // Store what we did in session
-            $_SESSION['last_act'] = 'rate';
-            $_SESSION['rate'] = $this->conversation->identifier();
+        // Was it a good satisfaction?
+        if ($rating > 2) 
+        {
+            // Fetch the reason for the happiness
+            $reason = $vars['reason_satisfaction'];
+
+            // If it's other, extra formatting
+            if ($reason == 'other') $reason = 'other:' . $vars['other_satisfied'];
         }
 
-        // Redirect to home
-        $this->redirect = '/index';
+        // Otherwise our reason is already in the data
+        else $reason = $vars['reasons'];
+        
+        // Get the conversation
+        $conversation = $this->website()->backend()->conversation((int) $vars['conversation_id']);
+        
+        // Add the rating
+        $conversation->addAnnotatorRating($rating, $reason);
+
+        // Store that we're rated this conversation
+        if (array_key_exists('rated', $_SESSION)) $_SESSION['rated'][] = (int) $vars['conversation_id'];
+        else $_SESSION['rated'] = array((int) $vars['conversation_id']);
+
+        // Should we rate another conversation?
+        if (count(array_diff($this->testConversations, $_SESSION['rated'])) > 0) $this->redirect = '/rate';
+
+        // Otherwise, redirect to home
+        else $this->redirect = '/thanks';
 
         // Return this page to redirect (done by render function)
         return $this;

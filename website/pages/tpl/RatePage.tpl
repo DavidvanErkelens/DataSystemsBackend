@@ -36,14 +36,11 @@
                 </div>
 
                 <div class="col-md-5 panel twocol">
-                    <form action="#" method="POST">
+                    <form action="/rate" method="POST">
                         <h2>The questions</h2>
                         <div class="div_line">
                             <p>
-                                How strongly do you agree with the following statement:
-                            </p>
-                            <p class="statement">
-                                The user had a satisfying conversation with the systemversation
+                                How satisfied do you think the user felt after this conversation?
                             </p>
                             <div class="div_line likert">
                                 <ul >
@@ -63,21 +60,21 @@
                             </p>
                             <ul > 
                                 <li>
-                                    <input type='checkbox' name='reason_satisfaction' value='User'>
+                                    <input type='checkbox' name='reason_satisfaction' value='user'>
                                     <label>The system was able to answer the users’ question(s)</label>
                                 </li>
                                 <li>
-                                    <input type='checkbox' name='reason_satisfaction' value='Interact'>
+                                    <input type='checkbox' name='reason_satisfaction' value='interact'>
                                     <label>The system was able to interact with the user well</label>
                                 </li>
                                 <li>
-                                    <input type='checkbox' name='reason_satisfaction' value='Naturally'>
+                                    <input type='checkbox' name='reason_satisfaction' value='naturally'>
                                     <label>The user was able to talk to the system naturally</label>
                                 </li>
                                 <li>
                                     <label for="Other_satisfied">
                                         <input type="checkbox" name="reason_satisfaction" id="Other_satisfied" value="other">
-                                        <input id="satisfied_other_text" class="propertytype_other" name="propertytype_other" type="text" value="" placeholder="other" class="form-control" width="80%">  
+                                        <input id="satisfied_other_text" class="propertytype_other" name="other_satisfied" type="text" value="" placeholder="other" class="form-control" width="80%">  
                                     </label>
                                 </li>
                                 <div class="checkbox" >
@@ -87,12 +84,15 @@
                         </div>
                         <div class="div_line second_question" id="dissatisfied">
                             <p >
-                                Please select sentence(s) where you think the user would be dissatisfied
+                                Please select the sentence or sentences where you think the user would be dissatisfied
                             </p>
                         </div>
-                        <input type="text" id="dis_sentences_reasons"></input>
+                        <input type="hidden" name="conversation_id" value="{$conversation->ID()}"></input>
+                        <input type="hidden" id="dis_sentences_reasons" name="reasons"></input>
                         <button type="button" >Exit</button> 
-                        <button type="button" class="formsubmit" id="submitbtn" disabled >Submit >></button>
+                        <button type="submit" class="formsubmit" id="submitbtn" disabled >Submit >></button>
+                        <br /><br />
+                        Click <i>submit</i> to submit your annotation and click <i>exit</i> to return to the instructions.
                     </form>
                 </div>
             </div>

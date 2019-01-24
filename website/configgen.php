@@ -25,6 +25,10 @@ echo json_encode(array(
             array(
                 'class' =>  'UploadPage',
                 'path'  =>  'upload'
+            ),
+            array(
+                'class' =>  'ThankYouPage',
+                'path'  =>  'thanks'
             )
         )
     )

@@ -253,8 +253,6 @@ $(document).ready(function(){
         window.convstatus[identifier] = {};
         window.convstatus[identifier]['type'] = $("input[name='reason_dissatisfaction_" + identifier + "']:checked").val();
         if (window.convstatus[identifier]['type'] == 'other') window.convstatus[identifier]['reason'] = $("#propertytype_other_" + identifier).val();
-    
-        console.log(window.convstatus);
 
 		// Change contents of popover (hacky as fuck though)
 		$("#" + $("#check" + identifier).attr('aria-describedby')).find('.popover-body').html(generatePopoverHtml(identifier));
@@ -308,5 +306,17 @@ $(document).ready(function(){
         
         // Update the hidden field
         updateHiddenField();
+	});
+
+	// Bind leave event
+	$(window).bind('beforeunload', function() {
+
+		// We'll prompt the user if he/she really wants to leave if the satisfied
+		// value is set - that is the start of the annotation.
+		if (!$("input[name='satisfaction']:checked").val()) return;
+
+		// Return a string - this will most likely be ignored, since all major
+		// browsers do that now
+		return 'Your annotation will not be saved if you leave now!';
 	});
 });
