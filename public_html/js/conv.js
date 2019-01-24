@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
         
     window.convdone = [];
     window.convstatus = {};
@@ -318,5 +318,12 @@ $(document).ready(function(){
         // Return a string - this will most likely be ignored, since all major
         // browsers do that now
         return 'Your annotation will not be saved if you leave now!';
+    });
+
+    // Listen to button click
+    $("#exitbtn").click(function() {
+            
+        // Redirect to rate page
+        window.location.href = "/index";
     });
 });

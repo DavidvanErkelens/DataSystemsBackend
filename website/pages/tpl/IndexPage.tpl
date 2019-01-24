@@ -45,9 +45,21 @@
                     <p>
                        Please try to answer the questions to the best of your abilities. To begin press “Start”.To go to the next conversation and save the annotation press “Submit”. You can always go back to the instruction page by clicking “exit”. 
                     </p>
-                    <button type="button">Start</button> 
+                    <button type="button" id="startbtn">Start</button> 
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+    $(document).ready(function() {
+
+        // Listen to button click
+        $("#startbtn").click(function() {
+            
+            // Redirect to rate page
+            window.location.href = "/rate";
+        });
+    });
+    </script>
 {/block}
