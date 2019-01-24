@@ -21,8 +21,14 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
 
+<!-- JavaScript and jQuery for the graphs -->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
  <!-- Own stylesheet -->
+<link rel="stylesheet" href="/css/ING_style.css">
 <link rel="stylesheet" href="/css/style.css">
+
+
 
 <title>ING project H1</title>
 </head>

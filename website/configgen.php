@@ -8,8 +8,7 @@ echo json_encode(array(
             ),
             array(
                 'class' => 'RatePage',
-                'path'  => 'rate',
-                // 'params'=>  1
+                'path'  => 'rate'
             ),
             array(
                 'class' =>  'LoginPage',
@@ -21,7 +20,7 @@ echo json_encode(array(
             ),
             array(
                 'class' =>  'AdminPanel',
-                'path'  =>  'admin'
+                'path'  =>  'dashboard'
             ),
             array(
                 'class' =>  'UploadPage',

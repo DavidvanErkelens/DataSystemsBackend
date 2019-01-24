@@ -25,20 +25,23 @@ class RatePage extends PostPage
         // Call parent
         parent::__construct($site, $path, $params);
 
-        // Get conversation
-        $conv = $this->parameter(0);
+        // Get a conversation
+        $this->conversation = $this->website()->backend()->conversation(456);
 
-        // Null?
-        if (is_null($conv)) $conv = $this->website()->backend()->conversation(456);
+        // // Get conversation
+        // $conv = $this->parameter(0);
 
-        // Make sure it exists
-        else $conv = $this->website()->backend()->conversation($conv);
+        // // Null?
+        // if (is_null($conv)) $conv = $this->website()->backend()->conversation(456);
 
-        // If it does not exist, we're going back home
-        if (is_null($conv)) $this->redirect = '/index';
+        // // Make sure it exists
+        // else $conv = $this->website()->backend()->conversation($conv);
 
-        // Store
-        $this->conversation = $conv;
+        // // If it does not exist, we're going back home
+        // if (is_null($conv)) $this->redirect = '/index';
+
+        // // Store
+        // $this->conversation = $conv;
     }
 
     /**
@@ -52,7 +55,7 @@ class RatePage extends PostPage
 
         // Assign conversation information
         $smarty->assign('id', $this->conversation->identifier());
-        $smarty->assign('conversation', $this->conversation->stringify(true));
+        $smarty->assign('conversation', $this->conversation);
     }
 
     /**

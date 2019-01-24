@@ -107,8 +107,8 @@ abstract class BasePage extends SiteFramework\Page
             // Set pages for logged in users
             $pages = array_merge($pages, array(
                 array(
-                    'href'  =>  'admin',
-                    'title' =>  'Admin panel'
+                    'href'  =>  'dashboard',
+                    'title' =>  'Dashboard'
                 ),
                 array(
                     'href'  =>  'upload',
