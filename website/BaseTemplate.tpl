@@ -40,7 +40,7 @@
         <div class="container">
             <!-- Brand -->
             <span class="logo">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/index">
                     <img src="/img/ING_logo.png" alt="ING logo"> 
                 </a>
             </span>
