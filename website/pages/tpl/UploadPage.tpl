@@ -2,7 +2,7 @@
 {block name=body}
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-md-center">
                 <div class="col-md-5 panel twocol">
                 <h2>Explanation of the data format</h2>
                 <h2>Upload format</h2>
