@@ -140,7 +140,7 @@ function createAgreementSpectrumChart(sdsat, dsat, neut, sat, ssat) {
             fontColor: '#ff6200',
         },
         axisY: {
-            title: "People in %"
+            title: "Number of conversations"
         },
         data: [{        
             type: "column",  
