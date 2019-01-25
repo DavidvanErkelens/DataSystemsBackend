@@ -84,7 +84,18 @@ function createSatisfactionChart(satisfiedPercentage) {
     // });    
 }
 
-function createSatisfactionOverTimeChart() {
+function createSatisfactionOverTimeChart(percentages) {
+
+    var dataPoints = [];
+
+    for (var key in percentages) {
+        perc = percentages[key];
+        console.log(perc);
+        dataPoints.push({ x: new Date(2018, 11, key), y: perc });
+    }
+
+    console.log(dataPoints);
+
     /* The line graph for the satisfaction rate over time according to the annotators*/
     var chart = new CanvasJS.Chart("chartContainer_Satisfaction_overtime", {
         animationEnabled: true,
@@ -114,28 +125,13 @@ function createSatisfactionOverTimeChart() {
         },
         data: [{        
             type: "line",       
-            dataPoints: [
-                { x: new Date(2017, 11, 3), y: 51 },
-                { x: new Date(2017, 11, 4), y: 56 },
-                { x: new Date(2017, 11, 5), y: 54 },
-                { x: new Date(2017, 11, 6), y: 55 },
-                { x: new Date(2017, 11, 6), y: 54 },
-                // { x: new Date(2017, 11, 8), y: 69 },
-                // { x: new Date(2017, 11, 9), y: 65 },
-                // { x: new Date(2017, 11, 10), y: 66 },
-                // { x: new Date(2017, 11, 11), y: 63 },
-                // { x: new Date(2017, 11, 12), y: 67 },
-                // { x: new Date(2017, 11, 13), y: 66 },
-                // { x: new Date(2017, 11, 14), y: 56 },
-                // { x: new Date(2017, 11, 15), y: 64 },
-                // { x: new Date(2017, 11, 16), y: 57 }
-            ]
+            dataPoints: dataPoints
         }]
     });
     chart.render();
 }
 
-function createAgreementSpectrumChart() {
+function createAgreementSpectrumChart(sdsat, dsat, neut, sat, ssat) {
     /* The barchart for the 5 categories from strongly agree to strongly disagree*/
     var chart = new CanvasJS.Chart("chartContainer_Barchart", {
         animationEnabled: true,
@@ -153,11 +149,11 @@ function createAgreementSpectrumChart() {
             type: "column",  
                 
             dataPoints: [      
-                { y: 20,  label: "Strongly satisfied" , color:"green"},
-                { y: 15,  label: "satisfied" , color:"lightgreen"},
-                { y: 20,  label: "Neutral" , color:"yellow"},
-                { y: 35,  label: "Dissatisfied" , color:"orange"},
-                { y: 10,  label: "Strongly dissatisfied" , color:"red"},
+                { y: sdsat,  label: "Strongly dissatisfied" , color:"red"},
+                { y: dsat,  label: "Dissatisfied" , color:"orange"},
+                { y: neut,  label: "Neutral" , color:"yellow"},
+                { y: sat,  label: "Satisfied" , color:"lightgreen"},
+                { y: ssat,  label: "Strongly satisfied" , color:"green"},
             ]
         }]
     });

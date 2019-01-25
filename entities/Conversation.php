@@ -286,6 +286,30 @@ class Conversation extends Entity
     }
 
     /**
+     *  Get the time this conversation happened
+     *  @return DateTime
+     */
+    public function dateTime(): DateTime
+    {
+        // Parse member
+        return new DateTime($this->row->created);
+    }
+
+    /**
+     *  Set the date and time for this conversation
+     *  @param  DateTime
+     *  @return Conversation
+     */
+    public function setDateTime(DateTime $time): Conversation
+    {
+        // Set member
+        $this->row->created = $time->format('Y-m-d H:i:s');
+        
+        // Allow chaining
+        return $this;
+    }
+
+    /**
      *  Get the average model rating
      *  @return  float
      */
@@ -300,6 +324,9 @@ class Conversation extends Entity
             // Increment counters
             $total += 1; $score += $r->rating();
         }
+
+        // If we have no ratings, assume a maximum rating?
+        if ($total == 0) return 5.0;
 
         // Return average value
         return $score / $total;

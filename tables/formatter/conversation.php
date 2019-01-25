@@ -21,6 +21,11 @@ echo json_encode(array(
         array(
             'name'              =>      'runtime',
             'type'              =>      'decimal(10,2)'
+        ),
+        array(
+            'name'              =>      'created',
+            'type'              =>      'datetime',
+            'null'              =>      false
         )
         // array(
         //     'name'              =>  'last_name',

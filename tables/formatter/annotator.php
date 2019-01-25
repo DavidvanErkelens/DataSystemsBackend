@@ -22,7 +22,12 @@ echo json_encode(array(
             'name'              =>      'reason',
             'type'              =>      'mediumtext',
             'null'              =>      'false'
-        )
+        ),
+        // array(
+        //     'name'              =>      'created',
+        //     'type'              =>      'datetime',
+        //     'null'              =>      false
+        // )
         // array(
         //     'name'              =>  'last_name',
         //     'type'              =>  'varchar(255)',

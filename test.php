@@ -12,9 +12,22 @@ $autoloader = new AutoIncluder(__DIR__, array(__DIR__ . '/vendor'));
 // // Create backend with included config
 $backend = new Backend($config);
 
-$conv = $backend->conversation(456);
+foreach ($backend->conversations() as $c)
+{
+    // Get random day
+    $day = rand(1, 31);
 
-echo $conv->satisfiedAnnotators();
+    // Format string
+    $date = "2018-12-{$day} 00:00:00";
+
+    $datetime = new DateTime($date);
+
+    $c->setDateTime($datetime);
+}
+
+// $conv = $backend->conversation(456);
+
+// echo $conv->satisfiedAnnotators();
 
 // foreach ($backend->conversations() as $c) 
 // {

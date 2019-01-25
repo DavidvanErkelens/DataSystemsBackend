@@ -36,8 +36,8 @@
     <script> 
         $(document).ready(function() {
             createSatisfactionChart({$satisfiedPercentage});
-            createSatisfactionOverTimeChart();
-            createAgreementSpectrumChart();
+            createSatisfactionOverTimeChart({$rateOverTime|json_encode});
+            createAgreementSpectrumChart({$sdsat}, {$dsat}, {$neut}, {$sat}, {$ssat});
         });
     </script>
 

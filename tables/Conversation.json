@@ -1,1 +1,1 @@
-{"columns":[{"name":"id","type":"int","null":false,"auto_increment":true},{"name":"identifier","type":"varchar(255)","null":false},{"name":"source","type":"varchar(255)","null":false},{"name":"runtime","type":"decimal(10,2)"}],"primary":"id"}
+{"columns":[{"name":"id","type":"int","null":false,"auto_increment":true},{"name":"identifier","type":"varchar(255)","null":false},{"name":"source","type":"varchar(255)","null":false},{"name":"runtime","type":"decimal(10,2)"},{"name":"created","type":"datetime","null":false}],"primary":"id"}
