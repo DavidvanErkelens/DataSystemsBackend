@@ -76,7 +76,8 @@ class AdminPanel extends BasePage
 
 
         // Store percentage
-        $smarty->assign('satisfiedPercentage', number_format(($totalSatisfied / count($conversations)) * 100, 2));
+        if (count($conversations) > 0) $smarty->assign('satisfiedPercentage', number_format(($totalSatisfied / count($conversations)) * 100, 2));
+        else $smarty->assign('satisfiedPercentage', 100.0);
 
         // Store ratings
         $smarty->assign('sdsat', $ratings[0]);
