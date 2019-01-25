@@ -30,50 +30,52 @@
 
 
 
-<title>ING project H1</title>
+<title>{$title}</title>
 </head>
 
 
 <body>
 <header>
-	<nav class="navbar navbar-expand-sm bg-light justify-content-left">
-		<div class="container">
-			<!-- Brand -->
-			<span class="logo">
-				<a class="navbar-brand" href="#">
-					<img src="/img/ING_logo.png" alt="ING logo"> 
-				</a>
-			</span>
-		</div>
-	</nav> 
-	<div class="jumbotron jumbotron-fluid">
-		<div class="container">
-			<img src="/img/Chatbot.png" alt="ING chatbot" class="banner_img"> 
-		</div>
-	</div>
-	<nav class="navbar navbar-expand-sm sticky-top menu">
-		<div class="container">	
-			
+    <nav class="navbar navbar-expand-sm bg-light justify-content-left">
+        <div class="container">
+            <!-- Brand -->
+            <span class="logo">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/ING_logo.png" alt="ING logo"> 
+                </a>
+            </span>
+        </div>
+    </nav> 
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <img src="/img/Chatbot.png" alt="ING chatbot" class="banner_img"> 
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-sm sticky-top menu">
+        <div class="container">	
+            
 
-			<!-- Toggler/collapsibe Button -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-			<!-- Navbar links -->
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="navbar-nav">
-          {foreach $pages as $page}
-            <li class="nav-item">
-              <a class="nav-link {if $page['href'] == $active}active{/if}" href="/{$page['href']}">{$page['title']}</a>
-            </li>
-          {/foreach}
-				</ul>
-			</div>
-		</div>
-	</nav>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    {foreach $pages as $page}
+                        <li class="nav-item">
+                            <a class="nav-link {if $page['href'] == $active}active{/if}" href="/{$page['href']}">{$page['title']}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
+
 {block name=body}{/block}
+
 <footer>
 
 </footer>

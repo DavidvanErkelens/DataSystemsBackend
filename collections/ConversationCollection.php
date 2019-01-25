@@ -42,4 +42,21 @@ class ConversationCollection extends Collection
         // Allow chaining
         return $this;
     }
+
+    /**
+     *  Filter by having annotator ratings
+     *  @param  boolean
+     *  @return ConversationCollection
+     */
+    public function hasAnnotatorRatings(bool $value = true): ConversationCollection
+    {
+        // Filter on annotator ratings
+        $this->items = array_filter($this->items, function ($item) use ($value) {
+            if ($value) return count($item->annotatorRatings()) > 0;
+            return count($item->annotatorRatings()) == 0;
+        });
+
+        // Allow chaining
+        return $this;
+    }
 }
