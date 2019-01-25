@@ -34,7 +34,7 @@ function createSatisfactionChart(satisfiedPercentage) {
             fontColor: '#ff6200',
         },
         subtitles: [{
-            text: "Click on the parts for the reasons",
+            // text: "Click on the parts for the reasons",
             /*backgroundColor: "#ff6200",*/
             fontSize: 16,
             fontColor: 'black',
