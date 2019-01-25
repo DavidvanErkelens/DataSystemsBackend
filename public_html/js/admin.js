@@ -90,11 +90,8 @@ function createSatisfactionOverTimeChart(percentages) {
 
     for (var key in percentages) {
         perc = percentages[key];
-        console.log(perc);
         dataPoints.push({ x: new Date(2018, 11, key), y: perc });
     }
-
-    console.log(dataPoints);
 
     /* The line graph for the satisfaction rate over time according to the annotators*/
     var chart = new CanvasJS.Chart("chartContainer_Satisfaction_overtime", {
@@ -160,50 +157,49 @@ function createAgreementSpectrumChart(sdsat, dsat, neut, sat, ssat) {
     chart.render();
 }
 
-/* The line graph for the satisfaction rate over time according to the model*/
-var chart = new CanvasJS.Chart("chartContainer_Satisfaction_overtime_model", {
-    animationEnabled: true,
-    theme: "light2",
-    title:{
-        text: "Satisfaction rate over time",
-        fontSize: 24,
-        fontColor: '#ff6200',
-    },
-    axisY:{
-        includeZero: false,
-        title: "Satisfaction rate in %",
-    },
-    axisX:{
-    valueFormatString: "DD MMM",
-    crosshair: {
-        enabled: true,
-        snapToDataPoint: true
-        }
-    },
-    legend:{
-        cursor:"pointer",
-        verticalAlign: "bottom",
-        horizontalAlign: "left",
-        dockInsidePlotArea: true
-    },
-    data: [{        
-        type: "line",       
-        dataPoints: [
-            { x: new Date(2017, 0, 3), y: 51 },
-            { x: new Date(2017, 0, 4), y: 56 },
-            { x: new Date(2017, 0, 5), y: 54 },
-            { x: new Date(2017, 0, 6), y: 55 },
-            { x: new Date(2017, 0, 7), y: 54 },
-            { x: new Date(2017, 0, 8), y: 69 },
-            { x: new Date(2017, 0, 9), y: 65 },
-            { x: new Date(2017, 0, 10), y: 66 },
-            { x: new Date(2017, 0, 11), y: 63 },
-            { x: new Date(2017, 0, 12), y: 67 },
-            { x: new Date(2017, 0, 13), y: 66 },
-            { x: new Date(2017, 0, 14), y: 56 },
-            { x: new Date(2017, 0, 15), y: 64 },
-            { x: new Date(2017, 0, 16), y: 57 }
-        ]
-    }]
-});
-// chart.render();
+function createModelChart(percentages) {
+
+    var dataPoints = [];
+
+    console.log(percentages);
+
+    for (var key in percentages) {
+        perc = percentages[key];
+        dataPoints.push({ x: new Date(2018, 11, key), y: perc });
+    }
+
+    /* The line graph for the satisfaction rate over time according to the model*/
+    var chart = new CanvasJS.Chart("chartContainer_Satisfaction_overtime_model", {
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+            text: "Satisfaction rate over time",
+            fontSize: 24,
+            fontColor: '#ff6200',
+        },
+        axisY:{
+            includeZero: false,
+            title: "Satisfaction rate in %",
+        },
+        axisX:{
+        valueFormatString: "DD MMM",
+        crosshair: {
+            enabled: true,
+            snapToDataPoint: true
+            }
+        },
+        legend:{
+            cursor:"pointer",
+            verticalAlign: "bottom",
+            horizontalAlign: "left",
+            dockInsidePlotArea: true
+        },
+        data: [{        
+            type: "line",       
+            dataPoints: dataPoints
+        }]
+    });
+    
+    chart.render();
+
+}

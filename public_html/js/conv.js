@@ -2,6 +2,7 @@ $(document).ready(function() {
         
     window.convdone = [];
     window.convstatus = {};
+    window.btnclick = false;
     
     mapper = {
         'nounderstand': 'The system was unable to understand the user',
@@ -309,7 +310,7 @@ $(document).ready(function() {
     });
 
     // Bind leave event
-    $(window).bind('beforeunload', function() {
+    $(window).on('beforeunload', function() {
 
         // We'll prompt the user if he/she really wants to leave if the satisfied
         // value is set - that is the start of the annotation.
@@ -320,10 +321,17 @@ $(document).ready(function() {
         return 'Your annotation will not be saved if you leave now!';
     });
 
+    // Form Submit
+    $(document).on("submit", "form", function() {
+
+        // disable warning
+        $(window).off('beforeunload');
+    });
+
     // Listen to button click
     $("#exitbtn").click(function() {
             
         // Redirect to rate page
-        window.location.href = "/index";
+        window.location.href = "/thanks";
     });
 });

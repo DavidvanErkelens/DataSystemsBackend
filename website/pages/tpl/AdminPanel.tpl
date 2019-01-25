@@ -38,6 +38,7 @@
             createSatisfactionChart({$satisfiedPercentage});
             createSatisfactionOverTimeChart({$rateOverTime|json_encode});
             createAgreementSpectrumChart({$sdsat}, {$dsat}, {$neut}, {$sat}, {$ssat});
+            createModelChart({$modelRateOverTime|json_encode});
         });
     </script>
 

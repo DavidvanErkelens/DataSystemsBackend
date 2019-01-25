@@ -326,7 +326,7 @@ class Conversation extends Entity
         }
 
         // If we have no ratings, assume a maximum rating?
-        if ($total == 0) return 5.0;
+        if ($total == 0) return 1.0;
 
         // Return average value
         return $score / $total;

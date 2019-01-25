@@ -2,7 +2,6 @@
 /**
  *  AdminPanel.php
  * 
- *  Basic index page
  */
 
 /**
@@ -35,6 +34,10 @@ class AdminPanel extends BasePage
         $rateOverTime = array();
         for ($i = 1; $i < 32; $i++) $rateOverTime[$i] = array('sat' => 0, 'total' => 0);
 
+        // Do the same for the model rating
+        $modelRateOverTime = array();
+        for ($i = 1; $i < 32; $i++) $modelRateOverTime[$i] = array('value' => 0.0, 'total' => 0);
+
         // Loop over conversations
         foreach ($conversations as $c) 
         {
@@ -51,11 +54,26 @@ class AdminPanel extends BasePage
             $rateOverTime[(int) $c->dateTime()->format('d')]['total'] += 1;
         }
 
+        // Loop over all conversations
+        foreach ($this->website()->backend()->conversations() as $c)
+        {
+            // Increment model counters
+            $modelRateOverTime[(int) $c->dateTime()->format('d')]['value'] += $c->averageModelRating();
+            $modelRateOverTime[(int) $c->dateTime()->format('d')]['total'] += 1;
+        }
+
         // Store over time ratings
         $smarty->assign('rateOverTime', array_map(function($value) {
             if ($value['total'] == 0) return 100;
             return round($value['sat'] / $value['total'] * 100, 2);
         }, $rateOverTime));
+
+        // Store model over time ratings
+        $smarty->assign('modelRateOverTime', array_map(function($value) {
+            if ($value['total'] == 0) return 100;
+            return round($value['value'] / $value['total'] * 100, 2);
+        }, $modelRateOverTime));
+
 
         // Store percentage
         $smarty->assign('satisfiedPercentage', number_format(($totalSatisfied / count($conversations)) * 100, 2));
