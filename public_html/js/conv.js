@@ -74,46 +74,46 @@ $(document).ready(function() {
         if (value > 2) {
 
             // Do we have at least one checkbox checked?
-            var $checks = $("input[name='reason_satisfaction']:checked");
+            // var $checks = $("input[name='reason_satisfaction']:checked");
 
-            // Check number of checkboxes
-            if ($checks.length > 0) {
+            // // Check number of checkboxes
+            // if ($checks.length > 0) {
 
-                // Should we stop?
-                window.stop = false;
+            //     // Should we stop?
+            //     window.stop = false;
 
-                // If the 'other' box is checked, we need a reason
-                $.each($checks, function() {
+            //     // If the 'other' box is checked, we need a reason
+            //     $.each($checks, function() {
                     
-                    // Is this the 'other' box?
-                    if ($(this).val() == 'other') {
+            //         // Is this the 'other' box?
+            //         if ($(this).val() == 'other') {
 
-                        // Check if we have a reason
-                        if ($("#satisfied_other_text").val().trim().length == 0) {
+            //             // Check if we have a reason
+            //             if ($("#satisfied_other_text").val().trim().length == 0) {
                             
-                            // No reason yet
-                            $("#submitbtn").prop("disabled", true);
+            //                 // No reason yet
+            //                 $("#submitbtn").prop("disabled", true);
 
-                            // We should stop
-                            window.stop = true;
-                        }
-                    }
+            //                 // We should stop
+            //                 window.stop = true;
+            //             }
+            //         }
                     
-                });
+            //     });
 
-                // Stop if we need to
-                if (window.stop) return;	
+            //     // Stop if we need to
+            //     if (window.stop) return;	
 
                 // We're fine
                 $("#submitbtn").prop("disabled", false);
 
-            }
+            // }
 
-            else {
+            // else {
 
-                // We are not enabled
-                $("#submitbtn").prop("disabled", true);
-            }
+            //     // We are not enabled
+            //     $("#submitbtn").prop("disabled", true);
+            // }
 
             // We're done
             return;
@@ -214,7 +214,7 @@ $(document).ready(function() {
         }
         else {
             /*Satisfied*/
-            $('#satisfied').show();
+            // $('#satisfied').show();
             $('#dissatisfied').hide();
     
             $( ".checkbox" ).prop('checked', false);

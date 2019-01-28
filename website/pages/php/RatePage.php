@@ -67,14 +67,7 @@ class RatePage extends PostPage
         $rating = (int) $vars['satisfaction'];
 
         // Was it a good satisfaction?
-        if ($rating > 2) 
-        {
-            // Fetch the reason for the happiness
-            $reason = $vars['reason_satisfaction'];
-
-            // If it's other, extra formatting
-            if ($reason == 'other') $reason = 'other:' . $vars['other_satisfied'];
-        }
+        if ($rating > 2) $reason = '';
 
         // Otherwise our reason is already in the data
         else $reason = $vars['reasons'];
