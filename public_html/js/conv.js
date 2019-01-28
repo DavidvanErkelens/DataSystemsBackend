@@ -73,47 +73,18 @@ $(document).ready(function() {
         // Are we satisfied?
         if (value > 2) {
 
-            // Do we have at least one checkbox checked?
-            // var $checks = $("input[name='reason_satisfaction']:checked");
+            // We're fine
+            $("#submitbtn").prop("disabled", false);
 
-            // // Check number of checkboxes
-            // if ($checks.length > 0) {
+            // Make sure all popovers are gone
+            $("[data-toggle=popover]").popover('hide');
 
-            //     // Should we stop?
-            //     window.stop = false;
+            // Delete status
+            window.convdone = [];
+            window.convstatus = {};
 
-            //     // If the 'other' box is checked, we need a reason
-            //     $.each($checks, function() {
-                    
-            //         // Is this the 'other' box?
-            //         if ($(this).val() == 'other') {
-
-            //             // Check if we have a reason
-            //             if ($("#satisfied_other_text").val().trim().length == 0) {
-                            
-            //                 // No reason yet
-            //                 $("#submitbtn").prop("disabled", true);
-
-            //                 // We should stop
-            //                 window.stop = true;
-            //             }
-            //         }
-                    
-            //     });
-
-            //     // Stop if we need to
-            //     if (window.stop) return;	
-
-                // We're fine
-                $("#submitbtn").prop("disabled", false);
-
-            // }
-
-            // else {
-
-            //     // We are not enabled
-            //     $("#submitbtn").prop("disabled", true);
-            // }
+            // Fix hidden field
+            updateHiddenField();
 
             // We're done
             return;
