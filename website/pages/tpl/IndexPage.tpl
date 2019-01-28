@@ -43,7 +43,7 @@
                     <p>If you want to add your own reason you can do so by selecting “Other”.
                     </p>
                     <p>
-                       Please try to answer the questions to the best of your abilities. To begin press “Start”.To go to the next conversation and save the annotation press “Submit”. You can always go back to the instruction page by clicking “exit”. 
+                       Please try to answer the questions to the best of your abilities. To begin press “Start”. To go to the next conversation and save the annotation press “Submit”. You can always go back to the instruction page by clicking “exit”. 
                     </p>
                     <button type="button" id="startbtn">Start</button> 
                 </div>

@@ -34,9 +34,9 @@ class RatePage extends PostPage
         // Get different between rate arrays
         if (array_key_exists('rated', $_SESSION)) $diff = array_diff($this->testConversations, $_SESSION['rated']);
         else $diff = $this->testConversations;
-
+    
         // Do we have something to rate?
-        if (count($diff) > 0) $this->conversation = $this->website()->backend()->conversation(array_shift($diff));
+        if (count($diff) > 0) $this->conversation = $this->website()->backend()->conversation($diff[array_rand($diff)]);
 
         // Otherwise go to thanks page
         else $this->redirect = '/thanks';
