@@ -89,8 +89,8 @@
                         </div>
                         <input type="hidden" name="conversation_id" value="{$conversation->ID()}"></input>
                         <input type="hidden" id="dis_sentences_reasons" name="reasons"></input>
-                        <button type="button" id="exitbtn" >Exit</button> 
-                        <button type="submit" class="formsubmit" id="submitbtn" disabled >Submit >></button>
+                        <button type="submit" class="formsubmit float-right  mx-1" id="submitbtn" disabled >Submit >></button>
+                        <button type="button" id="exitbtn" class="float-right mx-1">Exit</button> 
                         <br /><br />
                         Click <i>submit</i> to submit your annotation and click <i>exit</i> to return to the instructions.
                     </form>

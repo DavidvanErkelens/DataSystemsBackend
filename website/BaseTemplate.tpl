@@ -46,7 +46,7 @@
             </span>
         </div>
     </nav> 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid jumbo-collapse">
         <div class="container">
             <img src="/img/Chatbot.png" alt="ING chatbot" class="banner_img"> 
         </div>
@@ -73,6 +73,7 @@
         </div>
     </nav>
 </header>
+
 
 {block name=body}{/block}
 
