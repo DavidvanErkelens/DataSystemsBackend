@@ -77,7 +77,7 @@ class AdminPanel extends BasePage
             $total += $value['total'];
 
             // Return value
-            return round($rating / $total, 2);
+            return round($rating / $total * 100, 2);
         }, $rateOverTime));
 
         // Store last value for over time rating
@@ -95,7 +95,7 @@ class AdminPanel extends BasePage
             $modeltotal += $value['total'];
 
             // Return value
-            return round($modelrating / $modeltotal, 2);
+            return round($modelrating / $modeltotal * 100, 2);
         }, $modelRateOverTime));
 
         // Store percentage

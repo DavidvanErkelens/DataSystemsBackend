@@ -333,6 +333,19 @@ class Conversation extends Entity
     }
 
     /**
+     *  Get the first model rating
+     *  @return ConversationModelRating
+     */
+    public function firstModelRating(): ?ConversationModelRating
+    {
+        // Return first match
+        foreach ($this->modelRatings() as $rating) return $rating;
+
+        // Nothing found
+        return null;
+    }
+
+    /**
      *  Get the model ratings for this conversation
      *  @return ConversationModelRatingCollection
      */
