@@ -97,7 +97,7 @@ abstract class BasePage extends SiteFramework\Page
             ),
             array(
                 'href'  =>  'rate',
-                'title' =>  'Conversation'
+                'title' =>  'Annotate'
             ),
         );
 
