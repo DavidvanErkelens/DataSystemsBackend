@@ -332,6 +332,6 @@ $(document).ready(function() {
     $("#exitbtn").click(function() {
             
         // Redirect to rate page
-        window.location.href = "/thanks";
+        window.location.href = "/index";
     });
 });
