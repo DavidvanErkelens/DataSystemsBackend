@@ -5,8 +5,8 @@ $(document).ready(function() {
     window.btnclick = false;
     
     mapper = {
-        'nounderstand': 'The system was unable to understand the user',
-        'usererror': 'The user did not know how to talk to the system',
+        'nounderstand': 'The system was unable to understand the intent of the user',
+        'worderror': 'The system was unable to understand the wording of the user',
         'noinfo': 'The system did not have enough information available to answer the user'
     };
     
@@ -40,13 +40,13 @@ $(document).ready(function() {
                 <li>
                     <label>
                         <input type='radio' class="radio_reason" name='reason_dissatisfaction_${identifier}' value='nounderstand' width="80%">
-                        The system was unable to understand the user
+                        The system was unable to understand the intent of the user
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type='radio' class="radio_reason" name='reason_dissatisfaction_${identifier}' value='usererror'>
-                        The user did not know how to talk to the system
+                        <input type='radio' class="radio_reason" name='reason_dissatisfaction_${identifier}' value='worderror'>
+                        The system was unable to understand the wording of the user
                     </label>
                 </li>
                 <li>
