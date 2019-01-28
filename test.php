@@ -12,18 +12,30 @@ $autoloader = new AutoIncluder(__DIR__, array(__DIR__ . '/vendor'));
 // // Create backend with included config
 $backend = new Backend($config);
 
-foreach ($backend->conversations() as $c)
-{
-    // Get random day
-    $day = rand(1, 31);
+// foreach ($backend->conversations() as $c)
+// {
+//     // Get random day
+//     $day = rand(1, 31);
 
-    // Format string
-    $date = "2018-12-{$day} 00:00:00";
+//     // Format string
+//     $date = "2018-12-{$day} 00:00:00";
 
-    $datetime = new DateTime($date);
+//     $datetime = new DateTime($date);
 
-    $c->setDateTime($datetime);
-}
+//     $c->setDateTime($datetime);
+// }
+
+$convs = array(
+    "voip-dda7c88c6e-20130323_053612",
+    "voip-2f209793f4-20130326_005104",
+    "voip-7e07d8f0f5-20130328_190850",
+    "voip-5749b16764-20130328_150400",
+    "voip-155e939ebc-20130327_203543",
+    "voip-10beae627f-20130401_164239"
+    );
+
+foreach ($convs as $c) echo $backend->conversationByIdentifier($c)->ID() . ', ';
+
 
 // $conv = $backend->conversation(456);
 

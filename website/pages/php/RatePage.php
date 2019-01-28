@@ -20,7 +20,7 @@ class RatePage extends PostPage
      *  All conversation that should be rated for the demo
      *  @var array
      */
-    private $testConversations = array(501, 502);
+    private $testConversations = array(756, 457, 706, 819, 491, 511);
 
 
     /**
