@@ -49,7 +49,10 @@ class LoginPage extends PostPage
         }
 
         // Do we have a redirect path?
-        if (is_null($this->redirect)) $this->redirect = '/index';
+        // if (is_null($this->redirect)) $this->redirect = '/index';
+
+        // Set redirect to dashboard
+        $this->redirect = '/dashboard';
 
         // Return itself
         return $this;

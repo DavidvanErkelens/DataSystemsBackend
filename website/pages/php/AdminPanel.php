@@ -62,18 +62,41 @@ class AdminPanel extends BasePage
             $modelRateOverTime[(int) $c->dateTime()->format('d')]['total'] += 1;
         }
 
+        // Store last value for over time rating
+        $total = 0;
+        $rating = 0;
+
         // Store over time ratings
-        $smarty->assign('rateOverTime', array_map(function($value) {
-            if ($value['total'] == 0) return 100;
-            return round($value['sat'] / $value['total'] * 100, 2);
+        $smarty->assign('rateOverTime', array_map(function($value) use (&$rating, &$total) {
+            
+            // If we have no value, use the last value
+            if ($value['total'] == 0 && $total == 0) return 0.0;
+
+            // Increase counters
+            $rating += $value['sat'];
+            $total += $value['total'];
+
+            // Return value
+            return round($rating / $total, 2);
         }, $rateOverTime));
 
-        // Store model over time ratings
-        $smarty->assign('modelRateOverTime', array_map(function($value) {
-            if ($value['total'] == 0) return 100;
-            return round($value['value'] / $value['total'] * 100, 2);
-        }, $modelRateOverTime));
+        // Store last value for over time rating
+        $modeltotal = 0;
+        $modelrating = 0;
 
+        // Store over time ratings
+        $smarty->assign('modelRateOverTime', array_map(function($value) use (&$modelrating, &$modeltotal) {
+            
+            // If we have no value, use the last value
+            if ($value['total'] == 0 && $modeltotal == 0) return 0.0;
+
+            // Increase counters
+            $modelrating += $value['value'];
+            $modeltotal += $value['total'];
+
+            // Return value
+            return round($modelrating / $modeltotal, 2);
+        }, $modelRateOverTime));
 
         // Store percentage
         if (count($conversations) > 0) $smarty->assign('satisfiedPercentage', number_format(($totalSatisfied / count($conversations)) * 100, 2));
