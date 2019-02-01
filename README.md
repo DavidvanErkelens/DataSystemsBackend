@@ -1,0 +1,2 @@
+## Data Systems Project code
+This code runs the ING annotation tool developed for the Data Systems Project in 2019. In order to setup the code, run `composer install`, change the MySQL config in `config.php` and run `php createtables.php`.

@@ -11,17 +11,12 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:DavidvanErkelens/ToolboxFramework.git"
-        },
-        {
-            "type": "vcs",
             "url": "git@github.com:DavidvanErkelens/AutoIncluder.git"
         }
     ],
      "require": {
         "DavidvanErkelens/SiteFramework": "master@dev",
         "DavidvanErkelens/SqlFramework": "master@dev",
-        "DavidvanErkelens/ToolboxFramework": "master@dev",
         "DavidvanErkelens/AutoIncluder": "master@dev"
     }
 }
